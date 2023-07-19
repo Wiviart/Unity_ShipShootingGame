@@ -19,13 +19,13 @@ public class EnemyController : MonoBehaviour, IDamageable
 
     IEnumerator BulletShootCoroutine()
     {
+        yield return new WaitForSecondsRealtime(1f);
+
         float x = player.position.x;
         float y = transform.position.y;
 
         Bullet bullet = Instantiate(bulletPrefab, new Vector2(x, y), Quaternion.identity);
         bullet.SetDamage(damage);
-
-        yield return new WaitForSecondsRealtime(1f);
 
         StartCoroutine(BulletShootCoroutine());
     }
